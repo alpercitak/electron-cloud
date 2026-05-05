@@ -1,7 +1,7 @@
-import React, { useMemo, useRef } from 'react';
+import { useMemo, useRef } from 'react';
 import { AdditiveBlending, Color, Points, ShaderMaterial } from 'three';
 import { useFrame } from '@react-three/fiber';
-import { FRAGMENT_SHADER, VERTEX_SHADER } from '../constants';
+import { FRAGMENT_SHADER, VERTEX_SHADER } from './constants';
 
 interface Props {
   n: number;
@@ -11,7 +11,7 @@ interface Props {
 
 const COUNT = 150000 as const;
 
-export const OrbitalCloud: React.FC<Props> = ({ n, l, color }) => {
+export default function OrbitalCloud({ n, l, color }: Props) {
   const pointsRef = useRef<Points>(null!);
 
   const positions = useMemo(() => {
@@ -68,4 +68,4 @@ export const OrbitalCloud: React.FC<Props> = ({ n, l, color }) => {
       />
     </points>
   );
-};
+}

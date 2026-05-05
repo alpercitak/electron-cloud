@@ -2,9 +2,9 @@ import { Canvas } from '@react-three/fiber';
 import { OrbitControls } from '@react-three/drei';
 import { EffectComposer, Bloom } from '@react-three/postprocessing';
 import { useControls, Leva } from 'leva';
-import { OrbitalCloud } from './components/OrbitalCloud';
-import styles from './App.module.css';
 import Hud from './components/hud';
+import OrbitalCloud from './components/orbital-cloud';
+import styles from './App.module.css';
 
 export default function App() {
   const { n, l, color } = useControls({
