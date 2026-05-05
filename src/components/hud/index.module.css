@@ -23,3 +23,11 @@
   text-transform: uppercase;
   color: #4db6ac;
 }
+
+.hud__description {
+  margin: 0.65rem 0 0;
+  font-size: 0.75rem;
+  letter-spacing: 0.08rem;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.62);
+}
