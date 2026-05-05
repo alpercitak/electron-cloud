@@ -2,11 +2,11 @@ import { Canvas } from '@react-three/fiber';
 import { OrbitControls } from '@react-three/drei';
 import { EffectComposer, Bloom } from '@react-three/postprocessing';
 import { useControls, Leva } from 'leva';
-import Hud from './components/hud';
-import OrbitalCloud from './components/orbital-cloud';
-import styles from './App.module.css';
+import Hud from '../../components/hud';
+import OrbitalCloud from '../../components/orbital-cloud';
+import styles from './index.module.css';
 
-export default function App() {
+export default function Home() {
   const { n, l, color } = useControls({
     n: { value: 2, min: 1, max: 4, step: 1 },
     l: { value: 1, min: 0, max: 2, step: 1 },
@@ -14,7 +14,7 @@ export default function App() {
   });
 
   return (
-    <div className={styles.app}>
+    <div className={styles.home}>
       <Hud />
 
       <Leva theme={{ colors: { accent1: '#4db6ac', elevation1: '#111' } }} />
