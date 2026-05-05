@@ -18,9 +18,7 @@ export default function Home() {
   return (
     <div className={styles.home}>
       <Hud />
-
       <Leva theme={{ colors: { accent1: '#4db6ac', elevation1: '#111' } }} />
-
       <Canvas camera={{ position: [0, 0, 15] }}>
         <Suspense fallback={<Loader />}>
           <OrbitalCloud n={n} l={l} color={color} />
