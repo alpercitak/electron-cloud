@@ -30,7 +30,7 @@
 }
 
 .loader__text {
-  font-family: 'monospace';
+  font-family: inherit;
   font-size: 0.8rem;
   letter-spacing: 4px;
   text-transform: uppercase;
