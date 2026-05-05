@@ -4,6 +4,7 @@ import { EffectComposer, Bloom } from '@react-three/postprocessing';
 import { useControls, Leva } from 'leva';
 import { OrbitalCloud } from './components/OrbitalCloud';
 import styles from './App.module.css';
+import Hud from './components/hud';
 
 export default function App() {
   const { n, l, color } = useControls({
@@ -14,11 +15,7 @@ export default function App() {
 
   return (
     <div className={styles.app}>
-      <div className={styles.hud}>
-        <div className={styles.hud__panel}>
-          <h1 className={styles.hud__title}>Electron Cloud</h1>
-        </div>
-      </div>
+      <Hud />
 
       <Leva theme={{ colors: { accent1: '#4db6ac', elevation1: '#111' } }} />
 
