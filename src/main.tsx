@@ -3,8 +3,12 @@ import { createRoot } from 'react-dom/client';
 import Home from './pages/home';
 import './styles/global.css';
 
-createRoot(document.getElementById('root')!).render(
+const elem = document.getElementById('root')!;
+
+const app = (
   <StrictMode>
     <Home />
-  </StrictMode>,
+  </StrictMode>
 );
+
+createRoot(elem).render(app);

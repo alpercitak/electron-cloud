@@ -3,9 +3,9 @@ import { Leva, useControls } from 'leva';
 import { OrbitControls } from '@react-three/drei';
 import { Canvas } from '@react-three/fiber';
 import { Bloom, EffectComposer } from '@react-three/postprocessing';
-import Hud from '../../components/hud';
-import Loader from '../../components/loader';
-import OrbitalCloud from '../../components/orbital-cloud';
+import Hud from '@/components/hud';
+import Loader from '@/components/loader';
+import OrbitalCloud from '@/components/orbital-cloud';
 import styles from './index.module.css';
 
 export default function Home() {
