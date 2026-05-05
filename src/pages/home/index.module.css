@@ -3,33 +3,3 @@
   height: 100vh;
   background-color: #050505;
 }
-
-.home__loading {
-  display: grid;
-  place-items: center;
-  gap: 12px;
-  width: 100%;
-  height: 100%;
-  color: #9ad8d1;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-}
-
-.home__spinner {
-  width: 44px;
-  height: 44px;
-  border: 2px solid rgb(77 182 172 / 0.2);
-  border-top-color: #4db6ac;
-  border-radius: 999px;
-  animation: spin 0.9s linear infinite;
-}
-
-.home__status {
-  font-size: 0.78rem;
-}
-
-@keyframes spin {
-  to {
-    transform: rotate(360deg);
-  }
-}
