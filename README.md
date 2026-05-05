@@ -1,10 +1,10 @@
 # Electron Cloud
 
 ![React](https://img.shields.io/badge/React-000000?style=flat-square&logo=react&logoColor=61DAFB)
-![R3F](https://img.shields.io/badge/R3F-000000?style=flat-square&logo=react&logoColor=white)
 ![Three.js](https://img.shields.io/badge/Three.js-000000?style=flat-square&logo=three.js&logoColor=white)
-![Build](https://img.shields.io/github/actions/workflow/status/alpercitak/electron-cloud/build.yaml?branch=main&label=Build&color=4ade80&style=flat-square)
-![License](https://img.shields.io/badge/License-MIT-4ade80?style=flat-square)
+![R3F](https://img.shields.io/badge/R3F-000000?style=flat-square&logo=react&logoColor=white)
+![Build](https://img.shields.io/github/actions/workflow/status/alpercitak/electron-cloud/build.yaml?style=flat-square&label=&color=2ea44f)
+![License](https://img.shields.io/badge/MIT-2ea44f?style=flat-square)
 
 An interactive 3D visualizer for orbital-inspired electron clouds. It blends simplified quantum-mechanics motifs with real-time shader rendering so you can explore how changing `n` and `l` affects the overall cloud shape.
 
