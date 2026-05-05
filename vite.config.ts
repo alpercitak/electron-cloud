@@ -15,29 +15,60 @@ export default defineConfig({
   },
   build: {
     target: 'esnext',
-    chunkSizeWarningLimit: 1000,
     rolldownOptions: {
-      treeshake: true,
+      preserveEntrySignatures: 'allow-extension',
       output: {
-        manualChunks(id) {
-          if (!id.includes('node_modules')) return;
-
-          if (id.includes('node_modules/react-dom') || id.includes('node_modules/react/')) {
-            return 'react-vendor';
-          }
-          if (id.includes('node_modules/three/')) {
-            return 'three-core';
-          }
-          if (id.includes('@react-three/fiber') || id.includes('@react-three/drei')) {
-            return 'three-react';
-          }
-          if (id.includes('@react-three/postprocessing') || id.includes('postprocessing')) {
-            return 'three-effects';
-          }
-          if (id.includes('node_modules/leva')) {
-            return 'ui-vendor';
-          }
-          return 'vendor';
+        strictExecutionOrder: true,
+        codeSplitting: {
+          includeDependenciesRecursively: false,
+          groups: [
+            {
+              name: 'react-vendor',
+              test: /node_modules[\\/](react|react-dom)[\\/]/,
+              priority: 30,
+            },
+            {
+              name: 'three-postprocessing',
+              test: /node_modules[\\/]@react-three\/postprocessing[\\/]/,
+              priority: 25,
+              maxSize: 250000,
+            },
+            {
+              name: 'three-react',
+              test: /node_modules[\\/](@react-three\/fiber|@react-three\/drei|its-fine|react-use-measure|suspend-react)[\\/]/,
+              priority: 20,
+              maxSize: 250000,
+            },
+            {
+              name: 'three-core',
+              test: /node_modules[\\/]three[\\/]/,
+              priority: 15,
+              maxSize: 300000,
+            },
+            {
+              name: 'postprocessing-vendor',
+              test: /node_modules[\\/](postprocessing|n8ao)[\\/]/,
+              priority: 12,
+              maxSize: 300000,
+            },
+            {
+              name: 'ui-vendor',
+              test: /node_modules[\\/](leva|@radix-ui|@floating-ui|@stitches|react-colorful|react-dropzone|colord|dequal|merge-value|v8n|file-selector|attr-accept)[\\/]/,
+              priority: 10,
+              maxSize: 200000,
+            },
+            {
+              name: 'three-controls',
+              test: /node_modules[\\/](three-stdlib|camera-controls)[\\/]/,
+              priority: 9,
+              maxSize: 200000,
+            },
+            {
+              name: 'vendor',
+              test: /node_modules[\\/]/,
+              priority: 5,
+            },
+          ],
         },
       },
     },
