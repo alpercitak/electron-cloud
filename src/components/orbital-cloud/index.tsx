@@ -40,10 +40,10 @@ export default function OrbitalCloud({ n, l, color }: Props) {
 
   useFrame((state) => {
     const mat = pointsRef.current.material as ShaderMaterial;
-    mat.uniforms.uN.value = n;
-    mat.uniforms.uL.value = l;
-    mat.uniforms.uColor.value.set(color);
-    mat.uniforms.uTime.value = state.clock.getElapsedTime();
+    mat.uniforms.uN!.value = n;
+    mat.uniforms.uL!.value = l;
+    mat.uniforms.uColor!.value.set(color);
+    mat.uniforms.uTime!.value = state.clock.getElapsedTime();
     pointsRef.current.rotation.y += 0.001;
   });
 
