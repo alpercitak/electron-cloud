@@ -1,4 +1,4 @@
-import { useControls } from 'leva';
+import { Leva, useControls } from 'leva';
 import { OrbitControls } from '@react-three/drei';
 import { Canvas } from '@react-three/fiber';
 import { Bloom, EffectComposer } from '@react-three/postprocessing';
@@ -12,12 +12,15 @@ export default function Scene() {
   });
 
   return (
-    <Canvas camera={{ position: [0, 0, 15] }}>
-      <OrbitalCloud n={n} l={l} color={color} />
-      <EffectComposer>
-        <Bloom luminanceThreshold={0.2} intensity={1.5} />
-      </EffectComposer>
-      <OrbitControls enablePan={false} />
-    </Canvas>
+    <>
+      <Leva theme={{ colors: { accent1: '#4db6ac', elevation1: '#111' } }} />
+      <Canvas camera={{ position: [0, 0, 15] }}>
+        <OrbitalCloud n={n} l={l} color={color} />
+        <EffectComposer>
+          <Bloom luminanceThreshold={0.2} intensity={1.5} />
+        </EffectComposer>
+        <OrbitControls enablePan={false} />
+      </Canvas>
+    </>
   );
 }
