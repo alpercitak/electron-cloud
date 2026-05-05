@@ -3,11 +3,13 @@ import react from '@vitejs/plugin-react';
 import webfontDownload from 'vite-plugin-webfont-dl';
 import { resolve } from 'path';
 
+import { cloudflare } from "@cloudflare/vite-plugin";
+
 const SPACE_GROTESK_FONT_URL =
   'https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;700&display=swap' as const;
 
 export default defineConfig({
-  plugins: [react(), webfontDownload([SPACE_GROTESK_FONT_URL])],
+  plugins: [react(), webfontDownload([SPACE_GROTESK_FONT_URL]), cloudflare()],
   resolve: {
     alias: {
       '@': resolve(__dirname, './src'),
