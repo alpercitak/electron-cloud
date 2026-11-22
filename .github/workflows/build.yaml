@@ -10,6 +10,9 @@ concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
 
+permissions:
+  contents: read
+
 jobs:
   build:
     timeout-minutes: 5
@@ -17,9 +20,6 @@ jobs:
 
     steps:
       - uses: actions/checkout@v7
-        with:
-          persist-credentials: true
-          fetch-depth: 0
 
       - uses: oven-sh/setup-bun@v2
         with:
