@@ -12,7 +12,7 @@ An interactive 3D visualizer for orbital-inspired electron clouds. It blends sim
 
 ## Features
 
-- **Interactive Quantum Controls:** Change `n` and `l` in real time and watch the cloud reshape instantly.
+- **Interactive Quantum Controls:** Change `n` and `l` in real time and watch the cloud reshape instantly. `l` is kept below `n`, and the camera reframes to fit each orbital.
 - **GPU-Driven Point Cloud:** Renders 150,000 particles with custom GLSL shaders and additive blending.
 - **Orbital-Inspired Math:** Uses a simplified radial-plus-angular probability approximation to evoke familiar `s`, `p`, and `d`-like forms.
 - **Minimal Control Panel:** Lightweight controls for experimenting with orbital parameters and color.
@@ -30,12 +30,12 @@ An interactive 3D visualizer for orbital-inspired electron clouds. It blends sim
 
 In quantum mechanics, electrons do not follow defined paths. Instead, they exist as a probability density defined by the wave function $\psi$. This project calculates:
 
-1. **Radial Falloff:** A simplified decay term that changes with principal quantum number `n`.
-2. **Angular Shape:** A lightweight angular approximation that produces spherical, dumbbell-like, and clover-like silhouettes from `l`.
+1. **Radial Falloff:** $r^l e^{-r/n}$, rescaled so its peak (at $r = l \cdot n$) is 1 for every `n` and `l`. This keeps brightness comparable across orbitals; it is not the physical $\int |\psi|^2 = 1$ normalization.
+2. **Angular Shape:** $|\cos\theta|$ for `l = 1` and $|3\cos^2\theta - 1| / 2$ for `l = 2`, measured from the vertical axis, giving spherical, dumbbell, and dumbbell-with-ring silhouettes (the `m = 0` shapes).
 
-The visualizer scatters particles in 3D space and evaluates an approximate probability term in the shader, fading or discarding low-probability regions to create the cloud effect.
+Particles are scattered uniformly through a sphere, so on-screen density comes from the shader's probability term rather than the sampling. Low-probability points are faded or discarded to create the cloud effect.
 
-This is best understood as a visual approximation rather than a fully rigorous hydrogen-orbital solver: it does not currently model the magnetic quantum number `m`, exact normalization, or radial nodes from the full Schrödinger solution.
+This is best understood as a visual approximation rather than a fully rigorous hydrogen-orbital solver: it does not model the magnetic quantum number `m` (only `m = 0` shapes), true normalization, or the radial nodes of the full Schrödinger solution, and `l` is limited to 2.
 
 ## Installation & Setup
 
