@@ -1,4 +1,4 @@
-import { useFrame } from '@react-three/fiber';
+import { useFrame, useThree } from '@react-three/fiber';
 import { useMemo, useRef } from 'react';
 import { AdditiveBlending, Color, type Points } from 'three';
 import { FRAGMENT_SHADER, VERTEX_SHADER } from './constants';
@@ -15,7 +15,8 @@ const createPositions = () => {
   const pos = new Float32Array(COUNT * 3);
 
   for (let i = 0; i < COUNT; i++) {
-    const r = Math.random() * 12;
+    // cbrt keeps points uniform in volume, so density comes from the shader, not the sampling
+    const r = 12 * Math.cbrt(Math.random());
     const theta = Math.random() * Math.PI * 2;
     const phi = Math.acos(2 * Math.random() - 1);
 
@@ -31,14 +32,16 @@ const POSITIONS = createPositions();
 
 export default function OrbitalCloud({ n, l, color }: Props) {
   const pointsRef = useRef<Points>(null);
+  const dpr = useThree((state) => state.viewport.dpr);
 
   const uniforms = useMemo(
     () => ({
       uN: { value: n },
       uL: { value: l },
+      uPixelRatio: { value: dpr },
       uColor: { value: new Color(color) },
     }),
-    [color, l, n],
+    [color, dpr, l, n],
   );
 
   useFrame(() => {

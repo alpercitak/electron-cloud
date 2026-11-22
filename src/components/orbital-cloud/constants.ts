@@ -2,6 +2,7 @@ export const VERTEX_SHADER = `
   varying float vProbability;
   uniform float uN;
   uniform float uL;
+  uniform float uPixelRatio;
 
   void main() {
     vec3 pos = position;
@@ -13,14 +14,15 @@ export const VERTEX_SHADER = `
     // Probability Density Approximation
     float angular = 1.0;
     if (uL == 1.0) angular = abs(cos(theta)); 
-    if (uL == 2.0) angular = abs(3.0 * pow(cos(theta), 2.0) - 1.0); 
+    if (uL == 2.0) angular = abs(3.0 * pow(cos(theta), 2.0) - 1.0) * 0.5; 
     
-    float radial = exp(-r / uN) * pow(r, uL);
-    float probability = radial * angular;
-    vProbability = clamp(probability * 0.35, 0.0, 1.0);
+    // Normalized so the peak (at r = l * n) is 1 for every n and l
+    float x = r / uN;
+    float radial = uL == 0.0 ? exp(-x) : pow(x / uL, uL) * exp(uL - x);
+    vProbability = radial * angular;
 
     vec4 mvPosition = modelViewMatrix * vec4(pos, 1.0);
-    gl_PointSize = (4.0 + 8.0 * vProbability) * (1.0 / -mvPosition.z);
+    gl_PointSize = (4.0 + 8.0 * vProbability) * uPixelRatio * (6.0 / -mvPosition.z);
     gl_Position = projectionMatrix * mvPosition;
   }
 `;
