@@ -8,8 +8,8 @@ export const VERTEX_SHADER = `
     vec3 pos = position;
     float r = length(pos);
     
-    // Spherical coordinates
-    float theta = acos(clamp(pos.z / r, -1.0, 1.0));
+    // Polar angle from the y axis, so lobes stand vertical and face the camera side-on
+    float theta = acos(clamp(pos.y / r, -1.0, 1.0));
     
     // Probability Density Approximation
     float angular = 1.0;
