@@ -1,3 +1,8 @@
+export const CLOUD_RADIUS = 12;
+
+// Radius where the normalized density drops to ~5% (where the shader starts fading points in)
+export const visibleRadius = (n: number, l: number) => Math.min(CLOUD_RADIUS, n * (3 + 2.4 * l));
+
 export const VERTEX_SHADER = `
   varying float vProbability;
   uniform float uN;

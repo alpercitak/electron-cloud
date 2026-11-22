@@ -1,7 +1,7 @@
 import { useFrame, useThree } from '@react-three/fiber';
 import { useMemo, useRef } from 'react';
 import { AdditiveBlending, Color, type Points } from 'three';
-import { FRAGMENT_SHADER, VERTEX_SHADER } from './constants';
+import { CLOUD_RADIUS, FRAGMENT_SHADER, VERTEX_SHADER } from './constants';
 
 interface Props {
   n: number;
@@ -16,7 +16,7 @@ const createPositions = () => {
 
   for (let i = 0; i < COUNT; i++) {
     // cbrt keeps points uniform in volume, so density comes from the shader, not the sampling
-    const r = 12 * Math.cbrt(Math.random());
+    const r = CLOUD_RADIUS * Math.cbrt(Math.random());
     const theta = Math.random() * Math.PI * 2;
     const phi = Math.acos(2 * Math.random() - 1);
 
