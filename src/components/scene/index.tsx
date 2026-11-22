@@ -2,16 +2,22 @@ import { OrbitControls } from '@react-three/drei';
 import { Canvas } from '@react-three/fiber';
 import { Bloom, EffectComposer } from '@react-three/postprocessing';
 import { Leva, useControls } from 'leva';
+import { useEffect } from 'react';
 import OrbitalCloud from '@/components/orbital-cloud';
 
 const LEVA_FONT = "'Space Grotesk', system-ui, sans-serif" as const;
 
 export default function Scene() {
-  const { n, l, color } = useControls({
-    n: { value: 2, min: 1, max: 4, step: 1 },
-    l: { value: 1, min: 0, max: 2, step: 1 },
-    color: '#4db6ac',
-  });
+  const { n } = useControls({ n: { value: 2, min: 1, max: 4, step: 1 } });
+  // l must stay below n; the shader only has shapes up to l = 2
+  const [{ l, color }, set] = useControls(
+    () => ({ l: { value: 1, min: 0, max: Math.min(n - 1, 2), step: 1 }, color: '#4db6ac' }),
+    [n],
+  );
+  // Leva doesn't clamp the current value when max shrinks
+  useEffect(() => {
+    if (l >= n) set({ l: n - 1 });
+  }, [l, n, set]);
 
   return (
     <>
