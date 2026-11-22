@@ -8,6 +8,8 @@
 
 An interactive 3D visualizer for orbital-inspired electron clouds. It blends simplified quantum-mechanics motifs with real-time shader rendering so you can explore how changing `n` and `l` affects the overall cloud shape.
 
+**Live demo: [electron-cloud.pages.dev](https://electron-cloud.pages.dev/)**
+
 ## Features
 
 - **Interactive Quantum Controls:** Change `n` and `l` in real time and watch the cloud reshape instantly.
@@ -22,6 +24,7 @@ An interactive 3D visualizer for orbital-inspired electron clouds. It blends sim
 - **Runtime:** [Bun](https://bun.sh/)
 - **Language:** TypeScript
 - **Controls:** Leva
+- **Tooling:** Vite, Biome
 
 ## The Physics
 
@@ -44,4 +47,10 @@ bun install
 
 # Run development server
 bun run dev
+
+# Lint and format check (Biome)
+bun run check
+
+# Production build
+bun run build
 ```
