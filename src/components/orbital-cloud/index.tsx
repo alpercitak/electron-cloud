@@ -1,6 +1,6 @@
-import { useMemo, useRef } from 'react';
-import { AdditiveBlending, Color, Points } from 'three';
 import { useFrame } from '@react-three/fiber';
+import { useMemo, useRef } from 'react';
+import { AdditiveBlending, Color, type Points } from 'three';
 import { FRAGMENT_SHADER, VERTEX_SHADER } from './constants';
 
 interface Props {
@@ -30,7 +30,7 @@ const createPositions = () => {
 const POSITIONS = createPositions();
 
 export default function OrbitalCloud({ n, l, color }: Props) {
-  const pointsRef = useRef<Points>(null!);
+  const pointsRef = useRef<Points>(null);
 
   const uniforms = useMemo(
     () => ({
@@ -42,7 +42,7 @@ export default function OrbitalCloud({ n, l, color }: Props) {
   );
 
   useFrame(() => {
-    pointsRef.current.rotation.y += 0.001;
+    if (pointsRef.current) pointsRef.current.rotation.y += 0.001;
   });
 
   return (

@@ -3,7 +3,10 @@ import { createRoot } from 'react-dom/client';
 import Home from './pages/home';
 import './styles/global.css';
 
-const elem = document.getElementById('root')!;
+const elem = document.getElementById('root');
+if (!elem) {
+  throw new Error('Missing #root element');
+}
 
 const app = (
   <StrictMode>

@@ -1,7 +1,7 @@
-import { defineConfig } from 'vite';
+import { resolve } from 'node:path';
 import react from '@vitejs/plugin-react';
+import { defineConfig } from 'vite';
 import webfontDownload from 'vite-plugin-webfont-dl';
-import { resolve } from 'path';
 
 const SPACE_GROTESK_FONT_URL =
   'https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;700&display=swap' as const;

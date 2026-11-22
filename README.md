@@ -9,12 +9,14 @@
 An interactive 3D visualizer for orbital-inspired electron clouds. It blends simplified quantum-mechanics motifs with real-time shader rendering so you can explore how changing `n` and `l` affects the overall cloud shape.
 
 ## Features
+
 - **Interactive Quantum Controls:** Change `n` and `l` in real time and watch the cloud reshape instantly.
 - **GPU-Driven Point Cloud:** Renders 150,000 particles with custom GLSL shaders and additive blending.
 - **Orbital-Inspired Math:** Uses a simplified radial-plus-angular probability approximation to evoke familiar `s`, `p`, and `d`-like forms.
 - **Minimal Control Panel:** Lightweight controls for experimenting with orbital parameters and color.
 
 ## Tech Stack
+
 - **Framework:** [React 19](https://react.dev/)
 - **3D Engine:** [Three.js](https://threejs.org/) / [React Three Fiber](https://docs.pmnd.rs/react-three-fiber)
 - **Runtime:** [Bun](https://bun.sh/)
@@ -22,6 +24,7 @@ An interactive 3D visualizer for orbital-inspired electron clouds. It blends sim
 - **Controls:** Leva
 
 ## The Physics
+
 In quantum mechanics, electrons do not follow defined paths. Instead, they exist as a probability density defined by the wave function $\psi$. This project calculates:
 
 1. **Radial Falloff:** A simplified decay term that changes with principal quantum number `n`.
@@ -41,3 +44,4 @@ bun install
 
 # Run development server
 bun run dev
+```

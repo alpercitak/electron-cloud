@@ -1,7 +1,7 @@
-import { Leva, useControls } from 'leva';
 import { OrbitControls } from '@react-three/drei';
 import { Canvas } from '@react-three/fiber';
 import { Bloom, EffectComposer } from '@react-three/postprocessing';
+import { Leva, useControls } from 'leva';
 import OrbitalCloud from '@/components/orbital-cloud';
 
 const LEVA_FONT = "'Space Grotesk', system-ui, sans-serif" as const;
